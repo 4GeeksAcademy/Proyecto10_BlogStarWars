@@ -4,7 +4,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			personajes: [],
 			planetas: [],
 			vehiculos: [],
-			favoritos: [],
+			favorites: [],
 		},
 
 		actions: {
@@ -42,8 +42,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// AÑADIR A FAVORITOS
 			añadirFavorito: (item) => {
 				const store = getStore();
-				if (!store.favoritos.includes(item)) {
-					setStore({ favoritos: [...store.favoritos, item] });
+				if (!store.favorites.includes(item)) {
+					setStore({ favorites: [...store.favorites, item] });
 				}
 			},
 
@@ -51,7 +51,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			borrarFavorito: (index) => {
 				const store = getStore();
 				setStore({
-					favoritos: store.favoritos.filter((_, i) => i !== index)
+					favorites: store.favorites.filter((_, i) => i !== index)
 				});
 			}
 		},

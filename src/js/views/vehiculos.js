@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/cards.css";
+import { PiStarThin } from "react-icons/pi";
+
 
 export const Vehiculos = () => {
     const { store, actions } = useContext(Context);
@@ -23,7 +25,7 @@ export const Vehiculos = () => {
     };
 
     const añadirAFavoritos = (vehicleName) => {
-        if (!store.favoritos.includes(vehicleName)) {
+        if (!store.favorites.includes(vehicleName)) {
             actions.añadirFavorito(vehicleName);
             setAlertaDuplicados(null);
         } else {
@@ -74,7 +76,7 @@ export const Vehiculos = () => {
                 :
                 (
                     <div className="card-container">
-                        {store.vehiculos.map((vehicle, index) => (
+                        {store.vehiculos?.map((vehicle, index) => (
                             <div className="card m-2 card-custom bg-dark" key={index}>
                                 <img
                                     src={`https://starwars-visualguide.com/assets/img/vehicles/${vehicle.uid}.jpg`}
@@ -95,7 +97,7 @@ export const Vehiculos = () => {
                                             className="btn btn-warning"
                                             onClick={() => añadirAFavoritos(vehicle.name)}
                                         >
-                                            <i className="bi bi-star"></i>
+                                            <PiStarThin />
                                         </button>
                                     </div>
                                 </div>

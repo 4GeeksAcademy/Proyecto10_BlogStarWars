@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "../../styles/index.css";
 import { Context } from "../store/appContext";
+import { MdClear } from "react-icons/md";
+
 
 export const Navbar = () => {
     const { store, actions } = useContext(Context);
@@ -36,15 +38,16 @@ export const Navbar = () => {
                             data-bs-toggle="dropdown"
                             aria-expanded="false"
                         >
-                            Favoritos {store.favoritos.length}
+                            Favoritos {store.favorites.length}
                         </button>
                         <ul className="dropdown-menu dropdown-menu-dark dropdown-menu-end">
-                            {store.favoritos.map((fav, index) => (
+                            {store.favorites?.map((fav, index) => (
                                 <li key={index}>
                                     <div className="dropdown">
                                         <div className="d-flex justify-content-between mx-2">
                                             <span className="span-favt">{fav}<hr /></span>
-                                            <span className="span-x" onClick={() => actions.borrarFavorito(index)}><i className="bi bi-x"></i></span>
+                                            <span className="span-x" onClick={() => actions.borrarFavorito(index)}><MdClear />
+                                            </span>
                                         </div>
                                     </div>
                                 </li>

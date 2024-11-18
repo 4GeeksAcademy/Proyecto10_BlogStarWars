@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/cards.css";
+import { PiStarThin } from "react-icons/pi";
+
 
 
 export const Planetas = () => {
@@ -24,7 +26,7 @@ export const Planetas = () => {
     };
 
     const añadirAFavoritos = (planetName) => {
-        if (!store.favoritos.includes(planetName)) {
+        if (!store.favorites.includes(planetName)) {
             actions.añadirFavorito(planetName);
             setAlertaDuplicados(null);
         } else {
@@ -77,7 +79,7 @@ export const Planetas = () => {
                 :
                 (
                     <div className="card-container">
-                        {store.planetas.map((planet, index) => (
+                        {store.planetas?.map((planet, index) => (
                             <div className="card m-2 card-custom bg-dark" key={index}>
                                 <img
                                     src={`https://starwars-visualguide.com/assets/img/planets/${planet.uid}.jpg`}
@@ -99,7 +101,8 @@ export const Planetas = () => {
                                             className="btn btn-warning"
                                             onClick={() => añadirAFavoritos(planet.name)}
                                         >
-                                            <i className="bi bi-star"></i>
+                                            <PiStarThin />
+
                                         </button>
                                     </div>
                                 </div>
